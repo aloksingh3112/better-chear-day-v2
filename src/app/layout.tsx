@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      
+      <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="bettercheatday" data-description="Support me on Buy me a coffee!" data-message="" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -48,7 +48,10 @@ export default function RootLayout({
               <a href="#" className="text-gray-900 hover:text-gray-600 px-3 py-2 font-medium">ABOUT</a>
               <a href="#" className="text-gray-900 hover:text-gray-600 px-3 py-2 font-medium">TOOLS & RESOURCES</a>
               <a href="#" className="text-pink-500 hover:text-pink-600 px-3 py-2 font-medium">NUTRITION GUIDES</a>
+              <a href="https://www.buymeacoffee.com/bettercheatday" target="_blank">
+              
 
+              </a>
             </div>
           </div>
         </div>
