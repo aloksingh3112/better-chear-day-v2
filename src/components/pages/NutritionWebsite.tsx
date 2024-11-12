@@ -104,7 +104,7 @@ const NutritionWebsite = () => {
                   href={`/${restaurant.link}`}
                   className="inline-block bg-pink-500 text-white px-6 py-2 rounded-md hover:bg-pink-600 transition-colors duration-300"
                 >
-                  Download Guide
+                  View
                 </a>
               </div>
             </div>
