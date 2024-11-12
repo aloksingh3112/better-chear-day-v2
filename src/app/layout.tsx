@@ -36,8 +36,10 @@ export default function RootLayout({
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0 flex items-center">
               <span className="">
-                <img src="/images/macro.png"   
-                className="w-60 h-20 object-cover mt-3"/>
+                <a href="/">
+                  <img src="/images/macro.png"   
+                  className="w-60 h-20 object-cover mt-3"/>
+                </a>
               </span>
             </div>
 

@@ -7,55 +7,64 @@ const NutritionWebsite = () => {
       name: "Starbucks Menu Guide",
       description: "Complete Starbucks Nutrition Breakdown",
       image: "/images/starbucks.png",
-      pdfFile: "starbucks.pdf"
+      pdfFile: "starbucks.pdf",
+      link:"starbucks",
     },
     {
       name: "McDonalds Menu Guide",
       description: "Full McDonalds Menu Nutrition Information",
       image: "/images/mcd.png",
-      pdfFile: "mcdonalds.pdf"
+      pdfFile: "mcdonalds.pdf",
+      link:"mcdonalds"
     },
     {
       name: "Pizza Hut Nutrition",
       description: "Pizza Hut Nutrition Guide",
       image: "/images/pizza-hut.png",
-      pdfFile: "pizza-hut.pdf"
+      pdfFile: "pizza-hut.pdf",
+      link:"pizza-hut"
     },
     {
       name: "KFC Menu Breakdown",
       description: "KFC Menu Nutrition Guide",
       image: "/images/kfc.png",
-      pdfFile: "kfc.pdf"
+      pdfFile: "kfc.pdf",
+      link:"kfc"
     },
     {
       name: "Taco Bell Guide",
       description: "Taco Bell Nutrition Information",
       image: "/images/taco-bell.png",
-      pdfFile: "taco-bell.pdf"
+      pdfFile: "taco-bell.pdf",
+      link:"taco-bell"
     },
     {
       name: "Burger King",
       description: "Burger King Nutrition Guide",
       image: "/images/burger-king.png",
-      pdfFile: "burger-king.pdf"
+      pdfFile: "burger-king.pdf",
+      link:"burger-king"
     },
     {
       name: "Dominos Pizza Guide",
       description: "Dominos Pizza Menu Nutrition",
       image: "/images/domino.png",
-      pdfFile: "dominoes.pdf"
+      pdfFile: "dominoes.pdf",
+      link:"dominoes"
     },
     {
       name: "Faasos Menu Guide",
       description: "Faasos Menu Nutrition Guide",
       image: "/images/faasos.png",
-      pdfFile: "faasos.pdf"
+      pdfFile: "faasos.pdf",
+      link:"faasos"
     },
     {
       name: "Wow! Momo Analysis",
       description: "Wow! Momo Nutrition Guide",
       image: "/images/wow-momo.png",
-      pdfFile: "wow-momo.pdf"
+      pdfFile: "wow-momo.pdf",
+      link:"wow-momos"
     }
   ];
 
@@ -92,7 +101,7 @@ const NutritionWebsite = () => {
                   {restaurant.description}
                 </p>
                 <a 
-                  href={`/guides/${restaurant.pdfFile}`}
+                  href={`/${restaurant.link}`}
                   className="inline-block bg-pink-500 text-white px-6 py-2 rounded-md hover:bg-pink-600 transition-colors duration-300"
                 >
                   Download Guide
