@@ -26,19 +26,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
       <div className="min-h-screen bg-gray-50">
       {/* Navigation Bar */}
-      <nav className="bg-white shadow-sm sticky top-0 z-50">
+      <nav className="bg-white  top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0 flex items-center">
-              <span className="">
+              <span className="mt-10">
                 <a href="/">
-                  <img src="/images/macro.png"   
-                  className="w-60 h-20 object-cover mt-3"/>
+                  <img src="/images/logo.png"   
+                  className="w-30 h-24 object-cover "/>
                 </a>
               </span>
             </div>
