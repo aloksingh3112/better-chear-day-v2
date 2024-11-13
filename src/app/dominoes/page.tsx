@@ -1,14 +1,6 @@
 "use client"
 import React, { useState } from 'react';
 import { Input } from "@/components/ui/input";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Utensils } from "lucide-react";
 
@@ -56,6 +48,30 @@ const pizzaData = {
       "protein": 24,
       "carbs": 92,
       "fat": 26
+    },
+    {
+      "name": "Farmhouse",
+      "servingSize": "Regular (4 slices)",
+      "calories": 751,
+      "protein": 26,
+      "carbs": 94,
+      "fat": 28
+    },
+    {
+      "name": "Pepperoni",
+      "servingSize": "Regular (4 slices)",
+      "calories": 788,
+      "protein": 32,
+      "carbs": 88,
+      "fat": 32
+    },
+    {
+      "name": "Chicken Golden Delight",
+      "servingSize": "Regular (4 slices)",
+      "calories": 802,
+      "protein": 36,
+      "carbs": 88,
+      "fat": 34
     }
   ],
   "pan": [
@@ -74,6 +90,30 @@ const pizzaData = {
       "protein": 27,
       "carbs": 93,
       "fat": 29
+    },
+    {
+      "name": "Farmhouse",
+      "servingSize": "Regular (4 slices)",
+      "calories": 786,
+      "protein": 29,
+      "carbs": 95,
+      "fat": 31
+    },
+    {
+      "name": "Pepperoni",
+      "servingSize": "Regular (4 slices)",
+      "calories": 823,
+      "protein": 35,
+      "carbs": 89,
+      "fat": 35
+    },
+    {
+      "name": "Chicken Golden Delight",
+      "servingSize": "Regular (4 slices)",
+      "calories": 837,
+      "protein": 39,
+      "carbs": 89,
+      "fat": 37
     }
   ],
   "thin": [
@@ -92,6 +132,30 @@ const pizzaData = {
       "protein": 17,
       "carbs": 54,
       "fat": 20
+    },
+    {
+      "name": "Farmhouse",
+      "servingSize": "Regular (4 slices)",
+      "calories": 503,
+      "protein": 19,
+      "carbs": 56,
+      "fat": 22
+    },
+    {
+      "name": "Pepperoni",
+      "servingSize": "Regular (4 slices)",
+      "calories": 540,
+      "protein": 25,
+      "carbs": 50,
+      "fat": 26
+    },
+    {
+      "name": "Chicken Golden Delight",
+      "servingSize": "Regular (4 slices)",
+      "calories": 554,
+      "protein": 29,
+      "carbs": 50,
+      "fat": 28
     }
   ],
   "burst": [
@@ -110,11 +174,33 @@ const pizzaData = {
       "protein": 32,
       "carbs": 111,
       "fat": 38
+    },
+    {
+      "name": "Farmhouse",
+      "servingSize": "Regular (4 slices)",
+      "calories": 963,
+      "protein": 34,
+      "carbs": 113,
+      "fat": 40
+    },
+    {
+      "name": "Pepperoni",
+      "servingSize": "Regular (4 slices)",
+      "calories": 1000,
+      "protein": 40,
+      "carbs": 107,
+      "fat": 44
+    },
+    {
+      "name": "Chicken Golden Delight",
+      "servingSize": "Regular (4 slices)",
+      "calories": 1014,
+      "protein": 44,
+      "carbs": 107,
+      "fat": 46
     }
   ]
 };
-
-// Add more pizza data for each crust type...
 
 const NutritionTable = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -135,10 +221,10 @@ const NutritionTable = () => {
       <CardHeader className="border-b border-gray-200 bg-gradient-to-r from-[#006491] to-[#0085C5] text-white">
         <div className="flex items-center gap-2">
           <Utensils className="h-6 w-6" />
-          <CardTitle className="text-2xl">Dominos Pizza Nutrition Information</CardTitle>
+          <CardTitle className="text-xl md:text-2xl">Dominos Pizza Nutrition Information</CardTitle>
         </div>
         
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-2">
+        <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 p-2">
           {crustInfo.map((crust) => (
             <div 
               key={crust.key} 
@@ -148,9 +234,9 @@ const NutritionTable = () => {
                          ${selectedCrust === crust.key ? 'ring-2 ring-blue-600 scale-105' : ''}
                          shadow-md`}
             >
-              <div className="p-4">
-                <div className="font-bold text-blue-900">{crust.name}</div>
-                <div className="mt-1 text-sm text-blue-800">{crust.description}</div>
+              <div className="p-2 md:p-4">
+                <div className="font-bold text-sm md:text-base text-blue-900">{crust.name}</div>
+                <div className="mt-1 text-xs md:text-sm text-blue-800">{crust.description}</div>
               </div>
               {selectedCrust === crust.key && (
                 <div className="absolute top-2 right-2 w-2 h-2 bg-blue-600 rounded-full"></div>
@@ -176,38 +262,78 @@ const NutritionTable = () => {
           </div>
         </div>
         
-        <div className="rounded-xl border-2 border-gray-200 overflow-hidden shadow-lg">
-          <Table>
-            <TableHeader>
-              <TableRow className="bg-[#006491] text-white hover:bg-[#006491]/90">
-                <TableHead className="w-[30%] text-white">Pizza</TableHead>
-                <TableHead className="w-[15%] text-white">Serving Size</TableHead>
-                <TableHead className="text-right text-white">Calories</TableHead>
-                <TableHead className="text-right text-white">Protein (g)</TableHead>
-                <TableHead className="text-right text-white">Carbs (g)</TableHead>
-                <TableHead className="text-right text-white">Fat (g)</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
+        {/* Desktop Table View */}
+        <div className="hidden md:block rounded-xl border-2 border-gray-200 overflow-hidden shadow-lg">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-[#006491] text-white">
+                <th className="text-left p-4 font-medium">Pizza</th>
+                <th className="text-left p-4 font-medium">Serving Size</th>
+                <th className="text-right p-4 font-medium">Calories</th>
+                <th className="text-right p-4 font-medium">Protein (g)</th>
+                <th className="text-right p-4 font-medium">Carbs (g)</th>
+                <th className="text-right p-4 font-medium">Fat (g)</th>
+              </tr>
+            </thead>
+            <tbody>
               {filteredData.map((item, index) => (
-                <TableRow 
+                <tr 
                   key={index}
-                  className="hover:bg-blue-50 transition-colors duration-200"
+                  className="hover:bg-blue-50 transition-colors duration-200 border-t border-gray-200"
                 >
-                  <TableCell className={`font-medium ${isVeg(item.name) ? "text-green-600" : "text-red-600"}`}>
+                  <td className={`p-4 font-medium ${isVeg(item.name) ? "text-green-600" : "text-red-600"}`}>
                     {item.name}
-                  </TableCell>
-                  <TableCell className="font-medium text-blue-800">
+                  </td>
+                  <td className="p-4 font-medium text-blue-800">
                     {item.servingSize}
-                  </TableCell>
-                  <TableCell className="text-right">{item.calories}</TableCell>
-                  <TableCell className="text-right">{item.protein}</TableCell>
-                  <TableCell className="text-right">{item.carbs}</TableCell>
-                  <TableCell className="text-right">{item.fat}</TableCell>
-                </TableRow>
+                  </td>
+                  <td className="p-4 text-right">{item.calories}</td>
+                  <td className="p-4 text-right">{item.protein}</td>
+                  <td className="p-4 text-right">{item.carbs}</td>
+                  <td className="p-4 text-right">{item.fat}</td>
+                </tr>
               ))}
-            </TableBody>
-          </Table>
+            </tbody>
+          </table>
+        </div>
+
+        {/* Mobile Card View */}
+        <div className="md:hidden space-y-4">
+          {filteredData.map((item, index) => (
+            <div
+              key={index}
+              className="rounded-lg border-2 border-gray-200 p-4 hover:bg-blue-50 transition-colors duration-200"
+            >
+              <div className="flex justify-between items-start mb-3">
+                <h3 className={`font-bold ${isVeg(item.name) ? "text-green-600" : "text-red-600"}`}>
+                  {item.name}
+                </h3>
+                <span className="text-sm text-blue-800 font-medium">{item.servingSize}</span>
+              </div>
+              
+              <div className="grid grid-cols-3 gap-3">
+                <div className="text-center p-2 bg-blue-50 rounded-lg">
+                  <div className="text-xs text-gray-600">Calories</div>
+                  <div className="font-bold text-blue-900">{item.calories}</div>
+                </div>
+                <div className="text-center p-2 bg-blue-50 rounded-lg">
+                  <div className="text-xs text-gray-600">Protein</div>
+                  <div className="font-bold text-blue-900">{item.protein}g</div>
+                </div>
+                <div className="text-center p-2 bg-blue-50 rounded-lg">
+                  <div className="text-xs text-gray-600">Carbs</div>
+                  <div className="font-bold text-blue-900">{item.carbs}g</div>
+                </div>
+              </div>
+              
+              <div className="mt-3 pt-3 border-t border-gray-200">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-600">Total Fat</span>
+                  <span className="font-bold text-blue-900">{item.fat}g</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </CardContent>
     </Card>

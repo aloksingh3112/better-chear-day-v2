@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/table";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Coffee } from "lucide-react";
-import { menuData } from '../../data/starbucks';
+import {menuData} from '../../data/starbucks'
 
 const sizesInfo = [
   { 
@@ -52,10 +52,10 @@ const NutritionTable = () => {
       <CardHeader className="border-b border-gray-200 bg-gradient-to-r from-green-800 to-green-900 text-white">
         <div className="flex items-center gap-2">
           <Coffee className="h-6 w-6" />
-          <CardTitle className="text-2xl">Starbucks Nutrition Information</CardTitle>
+          <CardTitle className="text-xl md:text-2xl">Starbucks Nutrition Information</CardTitle>
         </div>
         
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-2">
+        <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 p-2">
           {sizesInfo.map((size) => (
             <div 
               key={size.name} 
@@ -63,12 +63,12 @@ const NutritionTable = () => {
                          transition-all duration-300 hover:scale-105 cursor-pointer
                          shadow-md`}
             >
-              <div className="p-4">
+              <div className="p-2 md:p-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl">{size.icon}</span>
-                  <span className="font-bold text-xl text-green-900">{size.name}</span>
+                  <span className="text-xl md:text-2xl">{size.icon}</span>
+                  <span className="font-bold text-sm md:text-xl text-green-900">{size.name}</span>
                 </div>
-                <div className="mt-2 text-sm font-medium text-green-800">{size.volume}</div>
+                <div className="mt-1 md:mt-2 text-xs md:text-sm font-medium text-green-800">{size.volume}</div>
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent"></div>
             </div>
@@ -91,7 +91,8 @@ const NutritionTable = () => {
           </div>
         </div>
         
-        <div className="rounded-xl border-2 border-gray-200 overflow-hidden shadow-lg">
+        {/* Desktop Table View */}
+        <div className="hidden md:block rounded-xl border-2 border-gray-200 overflow-hidden shadow-lg">
           <Table>
             <TableHeader>
               <TableRow className="bg-green-800 text-white hover:bg-green-800/90">
@@ -121,6 +122,43 @@ const NutritionTable = () => {
               ))}
             </TableBody>
           </Table>
+        </div>
+
+        {/* Mobile Card View */}
+        <div className="md:hidden space-y-4">
+          {filteredData.map((item, index) => (
+            <div
+              key={index}
+              className="rounded-lg border-2 border-gray-200 p-4 hover:bg-green-50 transition-colors duration-200"
+            >
+              <div className="flex justify-between items-start mb-3">
+                <h3 className="font-bold text-green-900">{item.name}</h3>
+                <span className="text-sm text-green-800 font-medium">{item.servingSize}</span>
+              </div>
+              
+              <div className="grid grid-cols-3 gap-4">
+                <div className="text-center p-2 bg-green-50 rounded-lg">
+                  <div className="text-sm text-gray-600">Calories</div>
+                  <div className="font-bold text-green-900">{item.calories}</div>
+                </div>
+                <div className="text-center p-2 bg-green-50 rounded-lg">
+                  <div className="text-sm text-gray-600">Protein</div>
+                  <div className="font-bold text-green-900">{item.protein}g</div>
+                </div>
+                <div className="text-center p-2 bg-green-50 rounded-lg">
+                  <div className="text-sm text-gray-600">Carbs</div>
+                  <div className="font-bold text-green-900">{item.carbs}g</div>
+                </div>
+              </div>
+              
+              <div className="mt-3 pt-3 border-t border-gray-200">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-600">Total Fat</span>
+                  <span className="font-bold text-green-900">{item.fat}g</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </CardContent>
     </Card>
