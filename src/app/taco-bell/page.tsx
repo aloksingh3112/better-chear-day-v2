@@ -1,14 +1,8 @@
+
+
 "use client"
 import React, { useState } from 'react';
 import { Input } from "@/components/ui/input";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Utensils } from "lucide-react";
 
@@ -156,13 +150,10 @@ const NutritionTable = () => {
   );
 
   const isVeg = (name) => {
-    // First check for explicit non-veg terms
     if (name.toLowerCase().includes('chicken') || 
         name.toLowerCase().includes('non veg')) {
         return false;
     }
-    
-    // Then check for veg terms
     return name.toLowerCase().includes('veg');
   };
 
@@ -171,7 +162,19 @@ const NutritionTable = () => {
       <CardHeader className="border-b border-gray-200 bg-gradient-to-r from-[#702082] to-[#8B2B93] text-white">
         <div className="flex items-center gap-2">
           <Utensils className="h-6 w-6" />
-          <CardTitle className="text-2xl">Taco Bell Nutrition Information</CardTitle>
+          <CardTitle className="text-xl md:text-2xl">Taco Bell Nutrition Information</CardTitle>
+        </div>
+        
+        {/* Category Legend */}
+        <div className="flex gap-4 mt-4 text-sm">
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 rounded-full bg-green-600"></span>
+            <span className="text-white">Vegetarian</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 rounded-full bg-red-600"></span>
+            <span className="text-white">Non-Vegetarian</span>
+          </div>
         </div>
       </CardHeader>
       
@@ -190,38 +193,79 @@ const NutritionTable = () => {
           </div>
         </div>
         
-        <div className="rounded-xl border-2 border-gray-200 overflow-hidden shadow-lg">
-          <Table>
-            <TableHeader>
-              <TableRow className="bg-[#702082] text-white hover:bg-[#702082]/90">
-                <TableHead className="w-[30%] text-white">Item</TableHead>
-                <TableHead className="w-[15%] text-white">Serving Size</TableHead>
-                <TableHead className="text-right text-white">Calories</TableHead>
-                <TableHead className="text-right text-white">Protein (g)</TableHead>
-                <TableHead className="text-right text-white">Carbs (g)</TableHead>
-                <TableHead className="text-right text-white">Fat (g)</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
+        {/* Desktop Table View */}
+        <div className="hidden md:block rounded-xl border-2 border-gray-200 overflow-hidden shadow-lg">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-[#702082] text-white">
+                <th className="text-left p-4 font-medium">Item</th>
+                <th className="text-left p-4 font-medium">Serving Size</th>
+                <th className="text-right p-4 font-medium">Calories</th>
+                <th className="text-right p-4 font-medium">Protein (g)</th>
+                <th className="text-right p-4 font-medium">Carbs (g)</th>
+                <th className="text-right p-4 font-medium">Fat (g)</th>
+              </tr>
+            </thead>
+            <tbody>
               {filteredData.map((item, index) => (
-                <TableRow 
+                <tr 
                   key={index}
-                  className="hover:bg-purple-50 transition-colors duration-200"
+                  className="hover:bg-purple-50 transition-colors duration-200 border-t border-gray-200"
                 >
-                  <TableCell className={`font-medium ${isVeg(item.name) ? categoryColors["Veg"] : categoryColors["Non-Veg"]}`}>
+                  <td className={`p-4 font-medium ${isVeg(item.name) ? categoryColors["Veg"] : categoryColors["Non-Veg"]}`}>
                     {item.name}
-                  </TableCell>
-                  <TableCell className="font-medium text-purple-800">
+                  </td>
+                  <td className="p-4 font-medium text-purple-800">
                     {item.servingSize}
-                  </TableCell>
-                  <TableCell className="text-right">{item.calories}</TableCell>
-                  <TableCell className="text-right">{item.protein}</TableCell>
-                  <TableCell className="text-right">{item.carbs}</TableCell>
-                  <TableCell className="text-right">{item.fat}</TableCell>
-                </TableRow>
+                  </td>
+                  <td className="p-4 text-right">{item.calories}</td>
+                  <td className="p-4 text-right">{item.protein}</td>
+                  <td className="p-4 text-right">{item.carbs}</td>
+                  <td className="p-4 text-right">{item.fat}</td>
+                </tr>
               ))}
-            </TableBody>
-          </Table>
+            </tbody>
+          </table>
+        </div>
+
+        {/* Mobile Card View */}
+        <div className="md:hidden space-y-4">
+          {filteredData.map((item, index) => (
+            <div
+              key={index}
+              className="rounded-lg border-2 border-gray-200 p-4 hover:bg-purple-50 transition-colors duration-200"
+            >
+              <div className="flex justify-between items-start mb-3">
+                <div className="flex-1">
+                  <h3 className={`font-bold ${isVeg(item.name) ? categoryColors["Veg"] : categoryColors["Non-Veg"]}`}>
+                    {item.name}
+                  </h3>
+                  <span className="text-sm text-purple-800 font-medium block mt-1">
+                    {item.servingSize}
+                  </span>
+                </div>
+                <div className="bg-purple-100 px-3 py-1 rounded-full">
+                  <span className="text-purple-800 font-bold">{item.calories}</span>
+                  <span className="text-purple-600 text-sm ml-1">cal</span>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-3 gap-3 mt-4">
+                <div className="text-center p-2 bg-purple-50 rounded-lg">
+                  <div className="text-xs text-gray-600">Protein</div>
+                  <div className="font-bold text-purple-900">{item.protein}g</div>
+                </div>
+                <div className="text-center p-2 bg-purple-50 rounded-lg">
+                  <div className="text-xs text-gray-600">Carbs</div>
+                  <div className="font-bold text-purple-900">{item.carbs}g</div>
+                </div>
+                <div className="text-center p-2 bg-purple-50 rounded-lg">
+                  <div className="text-xs text-gray-600">Fat</div>
+                  <div className="font-bold text-purple-900">{item.fat}g</div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </CardContent>
     </Card>
