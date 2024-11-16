@@ -91,6 +91,20 @@ export default function RootLayout({
             </div>
           </footer>
         </div>
+
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        )}
+        {children}
+
+        {/* Footer */}
+        <footer className="bg-gray-900 text-white py-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p className="text-sm">
+              © 2024 Better Cheat Days! All rights reserved.
+            </p>
+          </div>
+        </footer>
       </body>
     </html>
   );

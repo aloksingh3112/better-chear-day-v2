@@ -1,9 +1,14 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Search } from 'lucide-react';
+import { pageview } from '@/lib/gtag';
 
 const NutritionWebsite = () => {
   const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    pageview(window.location.pathname);
+  }, [])
 
   const restaurants = [
     {
@@ -11,68 +16,68 @@ const NutritionWebsite = () => {
       description: "Complete Starbucks Nutrition Breakdown",
       image: "/images/starbucks.png",
       pdfFile: "starbucks.pdf",
-      link:"starbucks",
+      link: "starbucks",
     },
     {
       name: "McDonalds Menu Guide",
       description: "Full McDonalds Menu Nutrition Information",
       image: "/images/mcd.png",
       pdfFile: "mcdonalds.pdf",
-      link:"mcdonalds"
+      link: "mcdonalds"
     },
     {
       name: "Pizza Hut Nutrition",
       description: "Pizza Hut Nutrition Guide",
       image: "/images/pizza-hut.png",
       pdfFile: "pizza-hut.pdf",
-      link:"pizza-hut"
+      link: "pizza-hut"
     },
     {
       name: "KFC Menu Breakdown",
       description: "KFC Menu Nutrition Guide",
       image: "/images/kfc.png",
       pdfFile: "kfc.pdf",
-      link:"kfc"
+      link: "kfc"
     },
     {
       name: "Taco Bell Guide",
       description: "Taco Bell Nutrition Information",
       image: "/images/taco-bell.png",
       pdfFile: "taco-bell.pdf",
-      link:"taco-bell"
+      link: "taco-bell"
     },
     {
       name: "Burger King",
       description: "Burger King Nutrition Guide",
       image: "/images/burger-king.png",
       pdfFile: "burger-king.pdf",
-      link:"burger-king"
+      link: "burger-king"
     },
     {
       name: "Dominos Pizza Guide",
       description: "Dominos Pizza Menu Nutrition",
       image: "/images/domino.png",
       pdfFile: "dominoes.pdf",
-      link:"dominoes"
+      link: "dominoes"
     },
     {
       name: "Faasos Menu Guide",
       description: "Faasos Menu Nutrition Guide",
       image: "/images/faasos.png",
       pdfFile: "faasos.pdf",
-      link:"faasos"
+      link: "faasos"
     },
     {
       name: "Wow! Momo Analysis",
       description: "Wow! Momo Nutrition Guide",
       image: "/images/wow-momo.png",
       pdfFile: "wow-momo.pdf",
-      link:"wow-momos"
+      link: "wow-momos"
     }
   ];
 
   // Filter restaurants based on search query
-  const filteredRestaurants = restaurants.filter(restaurant => 
+  const filteredRestaurants = restaurants.filter(restaurant =>
     restaurant.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     restaurant.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -113,7 +118,7 @@ const NutritionWebsite = () => {
           {filteredRestaurants.map((restaurant, index) => (
             <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="aspect-w-16 aspect-h-9 align-center flex items-center justify-center">
-                <img 
+                <img
                   src={restaurant.image}
                   alt={restaurant.name}
                   className="w-fit h-64 object-cover"
@@ -126,7 +131,7 @@ const NutritionWebsite = () => {
                 <p className="text-gray-600 mb-4">
                   {restaurant.description}
                 </p>
-                <a 
+                <a
                   href={`/${restaurant.link}`}
                   className="inline-block bg-pink-500 text-white px-6 py-2 rounded-md hover:bg-pink-600 transition-colors duration-300"
                 >
