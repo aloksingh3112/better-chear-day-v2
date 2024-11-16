@@ -206,7 +206,7 @@ const SubwayCalculator = () => {
 
       <CardContent className="p-6">
         {/* Progress Steps */}
-        <div className="flex justify-between mb-8">
+        <div className="flex justify-between mb-8 overflow-scroll">
           {["Bread", "Protein", "Cheese", "Veggies", "Sauces"].map(
             (step, index) => (
               <button
