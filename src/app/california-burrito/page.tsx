@@ -891,7 +891,7 @@ const NutritionTable = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-4">
+    <div className="w-full max-w-2xl mx-auto p-4 pt-0">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6 rounded-2xl mb-6 shadow-lg">
         <div className="flex items-center gap-3">
