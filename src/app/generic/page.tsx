@@ -199,7 +199,7 @@ const NutritionDatabase = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableRows start={0} end={Math.min(50, filteredData.length)} />
+              <TableRows start={0} end={filteredData.length} />
             </TableBody>
           </Table>
         </div>
