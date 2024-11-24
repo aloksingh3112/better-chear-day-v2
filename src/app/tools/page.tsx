@@ -20,7 +20,7 @@ const ComingSoon = () => {
         <Card className="p-4 sm:p-8 md:p-12 bg-white/80 backdrop-blur-sm">
           {/* Header */}
           <div className="text-center mb-8 sm:mb-12">
-            <div className="flex justify-center gap-4 sm:gap-6 mb-4 sm:mb-6">
+            <div className="flex justify-center gap-4 sm:gap-6 mb-4 sm:mb-6 mt-5">
               <Pizza className="w-6 h-6 sm:w-8 sm:h-8 text-purple-500" />
               <Coffee className="w-6 h-6 sm:w-8 sm:h-8 text-orange-500" />
               <Salad className="w-6 h-6 sm:w-8 sm:h-8 text-green-500" />
