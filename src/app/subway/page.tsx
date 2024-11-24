@@ -201,7 +201,7 @@ const SubwayCalculator = () => {
   return (
     <Card className="w-full bg-white">
       <CardHeader className="border-b">
-        <CardTitle className="text-xl">Subway Nutrition Calculator</CardTitle>
+        <CardTitle className="text-xl">Create your own subway</CardTitle>
       </CardHeader>
 
       <CardContent className="p-6">

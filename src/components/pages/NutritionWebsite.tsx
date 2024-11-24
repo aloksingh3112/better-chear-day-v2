@@ -33,6 +33,20 @@ const NutritionWebsite = () => {
       link: "mcdonalds",
     },
     {
+      name: "Create your own subway",
+      description: "Subway Nutrition Guide",
+      image: "/images/sub.png",
+      pdfFile: "subway.pdf",
+      link: "subway",
+    },
+    {
+      name: "California Burrito",
+      description: "California Burrito Nutrition Guide",
+      image: "/images/cali.png",
+      pdfFile: "california-burrito.pdf",
+      link: "california-burrito",
+    },
+    {
       name: "Pizza Hut Nutrition",
       description: "Pizza Hut Nutrition Guide",
       image: "/images/pizza-hut.png",
