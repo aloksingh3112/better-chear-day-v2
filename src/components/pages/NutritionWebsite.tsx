@@ -12,6 +12,13 @@ const NutritionWebsite = () => {
 
   const restaurants = [
     {
+      name: "Everything!",
+      description: "All items Nutrition Guide",
+      image: "/images/all.png",
+      pdfFile: "all.pdf",
+      link: "generic",
+    },
+    {
       name: "Starbucks Menu Guide",
       description: "Complete Starbucks Nutrition Breakdown",
       image: "/images/starbucks.png",
@@ -24,6 +31,20 @@ const NutritionWebsite = () => {
       image: "/images/mcd.png",
       pdfFile: "mcdonalds.pdf",
       link: "mcdonalds",
+    },
+    {
+      name: "Create your own subway",
+      description: "Subway Nutrition Guide",
+      image: "/images/sub.png",
+      pdfFile: "subway.pdf",
+      link: "subway",
+    },
+    {
+      name: "California Burrito",
+      description: "California Burrito Nutrition Guide",
+      image: "/images/cali.png",
+      pdfFile: "california-burrito.pdf",
+      link: "california-burrito",
     },
     {
       name: "Pizza Hut Nutrition",
