@@ -101,6 +101,37 @@ const NutritionTable = () => {
     overscan: 5,
   });
 
+  const TableRows = useCallback(
+    ({ start, end }) => (
+      <>
+        {filteredData.slice(start, end).map((item, index) => (
+          <TableRow
+            key={start + index}
+            className="hover:bg-teal-50/50 transition-colors duration-200"
+          >
+            <TableCell className="font-medium text-teal-900">
+              {item["Product"]}
+            </TableCell>
+            <TableCell className="text-teal-800">
+              {item["Serving Size (ml)"]}
+            </TableCell>
+            <TableCell className="text-right">
+              {item["Energy (Kcal)"]}
+            </TableCell>
+            <TableCell className="text-right">{item["Protein (g)"]}</TableCell>
+            <TableCell className="text-right">
+              {item["Carbohydrate (g)"]}
+            </TableCell>
+            <TableCell className="text-right">
+              {item["Total Fat (g)"]}
+            </TableCell>
+          </TableRow>
+        ))}
+      </>
+    ),
+    [filteredData]
+  );
+
   return (
     <Card className="w-full bg-white">
       <CardHeader className="border-b border-gray-200 bg-gradient-to-r from-green-800 to-green-900 text-white">
@@ -181,6 +212,9 @@ const NutritionTable = () => {
                   </TableHead>
                 </TableRow>
               </TableHeader>
+              <TableBody>
+                <TableRows start={0} end={filteredData.length} />
+              </TableBody>
             </Table>
 
             <div
