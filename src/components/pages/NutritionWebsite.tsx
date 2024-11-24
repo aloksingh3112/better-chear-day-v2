@@ -12,8 +12,8 @@ const NutritionWebsite = () => {
 
   const restaurants = [
     {
-      name: "All",
-      description: "All dishes Nutrition Guide",
+      name: "Everything!",
+      description: "All items Nutrition Guide",
       image: "/images/all.png",
       pdfFile: "all.pdf",
       link: "generic",
