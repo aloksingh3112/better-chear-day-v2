@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import React from "react";
+import BuyMeCoffeeButton from "@/components/utilities/BuyMeCoffee";
+import Navigation from "@/components/pages/Navigation";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -46,30 +48,7 @@ export default function RootLayout({
                   </span>
                 </div>
 
-                <div className="hidden md:flex space-x-8">
-                  <a
-                    href="#"
-                    className="text-gray-900 hover:text-gray-600 px-3 py-2 font-medium"
-                  >
-                    ABOUT
-                  </a>
-                  <a
-                    href="#"
-                    className="text-gray-900 hover:text-gray-600 px-3 py-2 font-medium"
-                  >
-                    TOOLS & RESOURCES
-                  </a>
-                  <a
-                    href="#"
-                    className="text-pink-500 hover:text-pink-600 px-3 py-2 font-medium"
-                  >
-                    NUTRITION GUIDES
-                  </a>
-                  <a
-                    href="https://www.buymeacoffee.com/bettercheatday"
-                    target="_blank"
-                  ></a>
-                </div>
+                <Navigation/>
               </div>
             </div>
           </nav>
