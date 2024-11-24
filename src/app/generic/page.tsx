@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useMemo, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import {
@@ -19,7 +20,6 @@ const NutritionDatabase = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedTerm, setDebouncedTerm] = useState("");
 
-  // Initialize data once
   const nutritionData = useMemo(
     () =>
       genericData.map((item) => ({
@@ -32,7 +32,6 @@ const NutritionDatabase = () => {
     []
   );
 
-  // Debounced search handler
   const debouncedSearch = useCallback(
     debounce((value) => {
       setDebouncedTerm(value);
@@ -40,13 +39,11 @@ const NutritionDatabase = () => {
     []
   );
 
-  // Handle search input
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
     debouncedSearch(e.target.value);
   };
 
-  // Memoized filtered data
   const filteredData = useMemo(
     () =>
       nutritionData.filter((item) =>
@@ -55,13 +52,12 @@ const NutritionDatabase = () => {
     [nutritionData, debouncedTerm]
   );
 
-  // Virtual scroll setup for mobile cards
   const parentRef = React.useRef();
 
   const rowVirtualizer = useVirtualizer({
     count: filteredData.length,
     getScrollElement: () => parentRef.current,
-    estimateSize: () => 180, // Estimated height of each card
+    estimateSize: () => 200,
     overscan: 5,
   });
 
@@ -96,7 +92,6 @@ const NutritionDatabase = () => {
     },
   ];
 
-  // Memoized table rows for desktop view
   const TableRows = useCallback(
     ({ start, end }) => (
       <>
@@ -205,13 +200,7 @@ const NutritionDatabase = () => {
         </div>
 
         {/* Mobile Card View with Virtual Scrolling */}
-        <div
-          ref={parentRef}
-          className="md:hidden h-[600px] overflow-auto"
-          style={{
-            contain: "strict",
-          }}
-        >
+        <div ref={parentRef} className="md:hidden h-[600px] overflow-auto">
           <div
             style={{
               height: `${rowVirtualizer.getTotalSize()}px`,
@@ -224,59 +213,58 @@ const NutritionDatabase = () => {
               return (
                 <div
                   key={virtualRow.index}
+                  data-index={virtualRow.index}
+                  ref={rowVirtualizer.measureElement}
                   style={{
                     position: "absolute",
                     top: 0,
                     left: 0,
                     width: "100%",
-                    height: `${virtualRow.size}px`,
                     transform: `translateY(${virtualRow.start}px)`,
                   }}
-                  className="p-2"
                 >
-                  <div
-                    className="rounded-xl border border-gray-200/80 p-4 hover:bg-white/80 
-                                 transition-colors duration-200 backdrop-blur-sm shadow-lg
-                                 bg-gradient-to-br from-white to-teal-50/30"
-                  >
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="font-medium text-teal-900">
-                        {item.food_item}
-                      </h3>
-                      <span className="text-sm text-teal-800 bg-teal-50 px-2 py-1 rounded-lg">
-                        {item.serving_size}
-                      </span>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-3">
-                      <div className="text-center p-2 bg-gradient-to-br from-teal-50 to-white rounded-lg border border-teal-100">
-                        <div className="text-sm text-teal-600">Protein</div>
-                        <div className="font-medium text-teal-900">
-                          {item.food_protein}g
-                        </div>
-                      </div>
-                      <div className="text-center p-2 bg-gradient-to-br from-cyan-50 to-white rounded-lg border border-cyan-100">
-                        <div className="text-sm text-cyan-600">Carbs</div>
-                        <div className="font-medium text-cyan-900">
-                          {item.food_carbs}g
-                        </div>
-                      </div>
-                      <div className="text-center p-2 bg-gradient-to-br from-sky-50 to-white rounded-lg border border-sky-100">
-                        <div className="text-sm text-sky-600">Fats</div>
-                        <div className="font-medium text-sky-900">
-                          {item.food_fats}g
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-4 pt-3 border-t border-gray-200">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-teal-600">
-                          Total Energy
+                  {/* Your existing card content */}
+                  <div className="py-4 ">
+                    <div className="w-full rounded-xl border border-gray-200/80 p-4 bg-white">
+                      <div className="flex justify-between items-start mb-4">
+                        <h3 className="font-medium text-teal-900">
+                          {item.food_item}
+                        </h3>
+                        <span className="text-sm text-teal-800 bg-teal-50 px-2 py-1 rounded-lg">
+                          {item.serving_size}
                         </span>
-                        <span className="font-medium text-teal-900 bg-teal-50 px-3 py-1 rounded-lg">
-                          {item.food_calories} cal
-                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-3">
+                        <div className="text-center p-2 bg-gradient-to-br from-teal-50 to-white rounded-lg border border-teal-100">
+                          <div className="text-sm text-teal-600">Protein</div>
+                          <div className="font-medium text-teal-900">
+                            {item.food_protein}g
+                          </div>
+                        </div>
+                        <div className="text-center p-2 bg-gradient-to-br from-cyan-50 to-white rounded-lg border border-cyan-100">
+                          <div className="text-sm text-cyan-600">Carbs</div>
+                          <div className="font-medium text-cyan-900">
+                            {item.food_carbs}g
+                          </div>
+                        </div>
+                        <div className="text-center p-2 bg-gradient-to-br from-sky-50 to-white rounded-lg border border-sky-100">
+                          <div className="text-sm text-sky-600">Fats</div>
+                          <div className="font-medium text-sky-900">
+                            {item.food_fats}g
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="mt-4 pt-3 border-t border-gray-200">
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm text-teal-600">
+                            Total Energy
+                          </span>
+                          <span className="font-medium text-teal-900 bg-teal-50 px-3 py-1 rounded-lg">
+                            {item.food_calories} cal
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>

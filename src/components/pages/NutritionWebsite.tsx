@@ -12,6 +12,13 @@ const NutritionWebsite = () => {
 
   const restaurants = [
     {
+      name: "All",
+      description: "All dishes Nutrition Guide",
+      image: "/images/all.png",
+      pdfFile: "all.pdf",
+      link: "generic",
+    },
+    {
       name: "Starbucks Menu Guide",
       description: "Complete Starbucks Nutrition Breakdown",
       image: "/images/starbucks.png",
