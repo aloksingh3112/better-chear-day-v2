@@ -30,7 +30,7 @@ const NutritionWebsite = () => {
       description: "Full McDonalds Menu Nutrition Information",
       image: "/images/mcd.png",
       pdfFile: "mcdonalds.pdf",
-      link: "mcdonalds",
+      link: "mcd",
     },
     {
       name: "Create your own subway",
