@@ -32,7 +32,7 @@ const Navigation = () => {
     if (path === '/') {
       return pathname === '/' || 
              ['/burger-king', '/mcd', '/starbucks', '/dominoes', 
-              '/taco-bell', '/pizza-hut', '/kfc', '/generic', '/subway'].some(
+              '/taco-bell', '/pizza-hut', '/kfc', '/generic', '/subway','/pizza-hut'].some(
                route => pathname.startsWith(route)
              );
     }
