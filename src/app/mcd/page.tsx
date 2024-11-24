@@ -292,7 +292,7 @@ const menuDataRaw = [
     FIELD17: "",
   },
   {
-    "Menu Items": "Pixxa Puff",
+    "Menu Items": "Pizza Puff",
     "Per Serve Size": "87 g",
     "Energy (kCal)": "228.21",
     '"Protein (g)"': "5.45",
